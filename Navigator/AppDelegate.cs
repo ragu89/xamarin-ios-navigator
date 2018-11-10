@@ -1,5 +1,10 @@
 ﻿using Foundation;
+using Mvvmicro;
+using Navigator.Services;
+using ServiceContracts.Interfaces;
 using UIKit;
+using VIewModels;
+using VIewModels.Interfaces;
 
 namespace Navigator
 {
@@ -8,7 +13,13 @@ namespace Navigator
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
-        // class-level declarations
+        #region static getter
+
+        public static ViewModelLocator Locator { get; private set; }
+
+        #endregion
+
+        #region UIApplicationDelegate override methods
 
         public override UIWindow Window
         {
@@ -18,8 +29,9 @@ namespace Navigator
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+            Container.Default.Register<INavigationService>((n) => new NavigationServiceIOS(this), isInstance: true);
+
+            Locator = new ViewModelLocator();
 
             return true;
         }
@@ -54,6 +66,8 @@ namespace Navigator
         {
             // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
+
+        #endregion
     }
 }
 

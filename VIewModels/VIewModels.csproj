@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ServiceContracts\ServiceContracts.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mvvmicro" Version="0.10.17" />
+  </ItemGroup>
 </Project>

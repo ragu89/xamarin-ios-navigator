@@ -8,13 +8,13 @@ namespace VIewModels
 {
     public class NavigationViewModel : INavigationViewModel
     {
+        private readonly INavigationService navigationService;
         PageEnum currentPage;
 
-        public NavigationViewModel()
+        public NavigationViewModel(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
         }
-
-        public INavigationService NavigationService { get; set; }
 
         public PageEnum CurrentPage
         {
@@ -24,7 +24,7 @@ namespace VIewModels
 
         public void Navigate(PageEnum page, object parameter = null)
         {
-            if (NavigationService.NavigateToView(page))
+            if (navigationService.NavigateToView(page))
             {
                 CurrentPage = page;
             }
