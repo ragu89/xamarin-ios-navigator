@@ -21,6 +21,8 @@ namespace Navigator.Services
 
         public bool NavigateToView(PageEnum pageEnum, object parameters = null)
         {
+            Debug.Print($"The NavigationServiceIOS is asking to navigate to the page '{pageEnum}");
+
             UIViewController visibleViewController = VisibleViewController;
             bool hasNavigated = false;
 
@@ -35,6 +37,7 @@ namespace Navigator.Services
                         break;
                 }
 
+                Debug.Print($"Navigation success : {hasNavigated}");
                 return hasNavigated;
             }
             catch(Exception e)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Mvvmicro;
 using ServiceContracts;
@@ -17,18 +16,16 @@ namespace VIewModels
         {
             this.navigationService = navigationService;
 
-            this.NavigateToPage2Command = new AsyncRelayCommand(ExecuteNavigateToPage2CommandAsync);
+            this.NavigateToPage2Command = new RelayCommand(ExecuteNavigateToPage2Command);
         }
 
-        Task ExecuteNavigateToPage2CommandAsync(System.Threading.CancellationToken arg)
+        void ExecuteNavigateToPage2Command()
         {
             Debug.Print("Executing Command to navigate to Page2");
             navigationService.NavigateToView(PageEnum.Page2);
-
-            return Task.Run(() => Task.Delay(0));
         }
 
-        public AsyncRelayCommand NavigateToPage2Command { get; }
+        public ICommand NavigateToPage2Command { get; }
 
     }
 }
