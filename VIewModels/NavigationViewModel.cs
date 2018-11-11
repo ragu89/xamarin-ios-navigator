@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using ServiceContracts;
 using ServiceContracts.Interfaces;
 using VIewModels.Interfaces;
@@ -22,17 +23,21 @@ namespace VIewModels
             set { currentPage = value; }
         }
 
-        public void Navigate(PageEnum page, object parameter = null)
+        public Task NavigateAsync(PageEnum page, object parameter = null)
         {
+            Debug.Print($"NavigationViewModel is asking to navigate to the page '{page}'");
+
             if (navigationService.NavigateToView(page))
             {
                 CurrentPage = page;
+                Debug.Print($"Navigation success. The CurrentPage is now '{page}'");
             }
             else
             {
                 Debug.Print($"Error when trying to navigate to the page {page}");
             }
 
+            return Task.Run(() => Task.Delay(0));
         }
     }
 }

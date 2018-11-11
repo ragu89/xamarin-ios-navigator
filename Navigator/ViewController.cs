@@ -26,10 +26,12 @@ namespace Navigator
             // Release any cached data, images, etc that aren't in use.
         }
 
+        IPage1ViewModel ViewModel => AppDelegate.Locator.Page1ViewModel;
+
         partial void NextButton_Click(NSObject sender)
         {
             Debug.Print("Next button clicked");
-            AppDelegate.Locator.NavigationViewModel.Navigate(PageEnum.Page2);
+            ViewModel.NavigateToPage2Command.Execute(null);
         }
     }
 }

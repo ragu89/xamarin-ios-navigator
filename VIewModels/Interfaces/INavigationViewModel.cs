@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ServiceContracts;
 
 namespace VIewModels.Interfaces
@@ -6,6 +7,6 @@ namespace VIewModels.Interfaces
     public interface INavigationViewModel
     {
         PageEnum CurrentPage { get; }
-        void Navigate(PageEnum page, object parameter = null);
+        Task NavigateAsync(PageEnum page, object parameter = null);
     }
 }
