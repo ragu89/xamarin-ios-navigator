@@ -4,17 +4,18 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Mvvmicro;
 using ServiceContracts;
+using ServiceContracts.Interfaces;
 using VIewModels.Interfaces;
 
 namespace VIewModels
 {
     public class Page1ViewModel : IPage1ViewModel
     {
-        private readonly INavigationViewModel navigationViewModel;
+        private readonly INavigationService navigationService;
 
-        public Page1ViewModel(INavigationViewModel navigationViewModel)
+        public Page1ViewModel(INavigationService navigationService)
         {
-            this.navigationViewModel = navigationViewModel;
+            this.navigationService = navigationService;
 
             this.NavigateToPage2Command = new AsyncRelayCommand(ExecuteNavigateToPage2CommandAsync);
         }
@@ -22,7 +23,9 @@ namespace VIewModels
         Task ExecuteNavigateToPage2CommandAsync(System.Threading.CancellationToken arg)
         {
             Debug.Print("Executing Command to navigate to Page2");
-            return navigationViewModel.NavigateAsync(PageEnum.Page2);
+            navigationService.NavigateToView(PageEnum.Page2);
+
+            return Task.Run(() => Task.Delay(0));
         }
 
         public AsyncRelayCommand NavigateToPage2Command { get; }
