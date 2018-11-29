@@ -20,22 +20,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-yK-LqZ">
-                                <rect key="frame" x="172.66666666666666" y="391" width="30" height="30"/>
-                                <state key="normal" title="next"/>
-                                <connections>
-                                    <action selector="NextButton_Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sd8-Ee-lOJ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MEq-Yv-wId">
+                                <rect key="frame" x="113" y="366" width="149" height="80.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mZ-yJ-RIS">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-Gh-ojx">
+                                        <rect key="frame" x="0.0" y="20.333333333333314" width="149" height="30"/>
+                                        <state key="normal" title="load method from VM"/>
+                                        <connections>
+                                            <action selector="LoadData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hXo-Iu-h3S"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-yK-LqZ">
+                                        <rect key="frame" x="0.0" y="50.333333333333314" width="149" height="30"/>
+                                        <state key="normal" title="next"/>
+                                        <connections>
+                                            <action selector="NextButton_Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sd8-Ee-lOJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mTu-yK-LqZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Iqu-zu-HSv"/>
-                            <constraint firstItem="mTu-yK-LqZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sfO-4L-U1Z"/>
+                            <constraint firstItem="MEq-Yv-wId" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6T8-E6-odn"/>
+                            <constraint firstItem="MEq-Yv-wId" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aJa-oV-TKk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Page 1" id="mQB-Yd-6DS"/>
                     <connections>
+                        <outlet property="resultLabel" destination="5mZ-yJ-RIS" id="x3U-t7-gVP"/>
                         <segue destination="5SY-Jg-rbp" kind="show" identifier="showPage2Segue" id="QzR-Eq-o92"/>
                     </connections>
                 </viewController>

@@ -9,14 +9,24 @@ using System.CodeDom.Compiler;
 
 namespace Navigator
 {
-    [Register ("ViewController")]
-    partial class ViewController
-    {
-        [Action ("NextButton_Click:")]
-        partial void NextButton_Click (Foundation.NSObject sender);
-        
-        void ReleaseDesignerOutlets ()
-        {
-        }
-    }
+	[Register ("ViewController")]
+	partial class ViewController
+	{
+		[Outlet]
+		UIKit.UILabel resultLabel { get; set; }
+
+		[Action ("LoadData:")]
+		partial void LoadData (Foundation.NSObject sender);
+
+		[Action ("NextButton_Click:")]
+		partial void NextButton_Click (Foundation.NSObject sender);
+		
+		void ReleaseDesignerOutlets ()
+		{
+			if (resultLabel != null) {
+				resultLabel.Dispose ();
+				resultLabel = null;
+			}
+		}
+	}
 }

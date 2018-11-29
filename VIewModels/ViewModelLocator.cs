@@ -16,7 +16,7 @@ namespace VIewModels
 
         void RegisterViewModels(INavigationService navigationService)
         {
-            Container.Default.Register<IPage1ViewModel>((vm) => new Page1ViewModel(navigationService));
+            Container.Default.Register<IPage1ViewModel>((vm) => new Page1ViewModel(navigationService), true);
         }
 
         public IPage1ViewModel Page1ViewModel => Container.Default.Get<IPage1ViewModel>();
